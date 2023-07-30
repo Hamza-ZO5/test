@@ -1,0 +1,12 @@
+#! /bin/bash
+echo "hello ...... od" > /tmp/test.txt
+n=`find /etc/grub.d -perm 755 -typef | wc -l`
+echo "-there $n .........." >> /tmp/test.txt
+x=`grep "menuentry" /etc/grub.d/40_custom | wc -l`
+m=$(expr 4 +$x)
+echo ".............$m ..." >> /tmp/test.txt
+y=0
+for var in  `cut -d :-f3 /etc/passwd`
+do if [ $var -ge "1000" -a -le "6000" ] ;then
+y=$(($y+1))  fi done
+[Unit]Description=MonServiceafter=network.targetrequires=display-manager.service[service]ExecStart=/usr/sbin/hello.sh[install]WantedBy=multi-user.target
