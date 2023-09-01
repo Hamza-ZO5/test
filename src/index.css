@@ -1,0 +1,563 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  color: #000000;
+}
+
+body {
+  background-image: url('images/back1.jpg');
+  background-size: cover;
+  background-position: center;
+  /* Center the background image */
+  min-height: 100vh;
+  background-color: dodgerblue;
+  backdrop-filter: blur(10px);
+  /* Adjust the blur amount as needed */
+}
+
+/* body {
+  background-image: url('images/back1.jpg');
+    min-height: 100vh;
+    background-color: dodgerblue;
+    backdrop-filter: blur(10px); 
+
+} */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+}
+
+section {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(125, 98, 123, 0.171);
+  /* Transparent violet background */
+  backdrop-filter: blur(10px);
+  /* Apply the blur effect */
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  /* Layout items in a column (vertical) */
+  /* align-items: center; */
+
+  justify-content: space-between;
+  transition: background-color 0.5s, transform 0.5s, box-shadow 0.5s;
+  /* Longer transition durations */
+  position: relative;
+  /* For positioning the emoji dropdown */
+}
+
+section:hover {
+  background-color: rgba(247, 22, 161, 0.147);
+  /* Change background color on hover */
+  transform: scale(1.05);
+  /* Increase size on hover */
+}
+
+section a:hover {
+  color: rgba(0, 0, 0, 0.734);
+  /* Transparent red color on hover */
+  text-decoration: underline;
+  /* Add an underline on hover */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+a,
+a:visited {
+  color: #000000;
+}
+
+input[type="text"],
+input[type="password"],
+button,
+textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+label,
+button {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #000000;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions>svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+}
+
+.flexGrow {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+/*new*/
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.table-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.table-wrapper {
+  flex: 1;
+  margin: 20px;
+}
+
+/* CSS pour les boutons dans les en-têtes des colonnes */
+.table-header-button {
+  margin-right: 8px;
+}
+
+/* CSS pour les icônes de recherche dans les en-têtes des colonnes */
+.table-header-search-icon {
+  color: #1890ff;
+  margin-right: 4px;
+}
+
+.table-card {
+  flex: 1;
+}
+
+.search-card {
+  margin-bottom: 16px;
+}
+
+.blue-button {
+  background-color: #5EC2D7;
+  color: white;
+  margin-right: 8px;
+}
+
+.App {
+  text-align: center;
+  width: 95%;
+  margin: 15px auto;
+}
+
+.container-drag {
+  text-align: center;
+}
+
+.wip {
+  position: absolute;
+  width: 150px;
+  height: 100vh;
+  left: 0;
+  top: 10;
+  background-color: #EEEEEE;
+  border-right: 1px dotted;
+}
+
+.header {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background-color: #E0E0E0;
+  width: 100%;
+  /*   margin-bottom: 20px;
+  font-size: 18px; */
+}
+
+.task-header {
+  display: inline-block;
+  background-color: skyblue;
+  width: 100%;
+}
+
+.droppable {
+  position: absolute;
+  width: 150px;
+  height: 100vh;
+  right: 0;
+  top: 10;
+  background-color: #9E9E9E;
+  border-left: 1px dotted;
+}
+
+.draggable {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  margin: 5px auto;
+  line-height: 5em;
+}
+
+
+/* src/DragAndDrop.css */
+.drag-and-drop-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgba(116, 62, 102, 0.5);
+  /* Transparent background */
+  border-radius: 10px;
+  backdrop-filter: blur(100px);
+  /* Adjust the blur radius as needed */
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+
+
+}
+
+.task-list {
+  flex: 1;
+  min-width: 250px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+}
+
+.task>div {
+  flex: 1;
+  padding-right: 10px;
+}
+
+/*kanban board*/
+/* Draganddrop.css */
+
+.drag-and-drop-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.task-list {
+  min-width: 200px;
+  padding: 10px;
+  border: 1px solid #cf1fc9;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.5);
+  /* Transparent background */
+  backdrop-filter: blur(10px);
+  /* Adjust the blur radius as needed */
+
+}
+
+.task {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  /* For positioning the emoji dropdown */
+
+}
+
+.emoji-dropdown select {
+  padding: 5px;
+  border: 1px solid #943838;
+  border-radius: 5px;
+}
+
+.task:hover {
+  background-color: #00ddff;
+  /* Change background color on hover */
+  transform: scale(1.05);
+  /* Increase size on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add more shadow on hover */
+}
+
+.add-task {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-task input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+
+
+/* Adjust styles for the delete button */
+.task .ant-btn {
+  padding: 5px;
+  background-color: #f5222d;
+  border-color: #f5222d;
+  box-shadow: none;
+}
+
+.task .ant-btn:hover {
+  background-color: #ff4d4f;
+  border-color: #ff4d4f;
+}
+
+/* Add some space between the delete button and the task content */
+.task .ant-btn+.task-content {
+  margin-right: 8px;
+  flex: 1;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.add-task-button {
+  padding: 10px 15px;
+  background-color: #ffffff;
+  color: #5b5151;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-task-button:hover {
+  background-color: #00ddff;
+  /* Change background color on hover */
+  transform: scale(1.05);
+}
+
+
+.logout-link {
+  margin-bottom: 20px;
+}
+
+.logout-link a {
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.logout-link a:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+
+/* linakge style */
+.link-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(145, 61, 136, 0.2);
+  /* Transparent violet background */
+  backdrop-filter: blur(10px);
+  /* Apply the blur effect */
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  /* For positioning the emoji dropdown */
+}
+
+.link-page:hover {
+  background-color: rgba(23, 12, 22, 0.245);
+  /* Change background color on hover */
+  transform: scale(1.05);
+  /* Increase size on hover */
+}
+
+h1,
+h2 {
+  color: #000000;
+}
+
+.link-group {
+  margin-top: 20px;
+}
+
+.link {
+  display: block;
+  padding: 10px 15px;
+  margin: 5px 0;
+  background-color: rgba(145, 61, 136, 0.2);
+  color: #6c4646;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  text-decoration: none;
+  /* Remove underline on hover for both .link-page and .link */
+
+}
+
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.305);
+  /* Change background color on hover */
+  transform: scale(1.05);
+  /* Increase size on hover */
+}
+
+
+
+/* lounge */
+/* Add your other styles above */
+
+/* Add your other styles above */
+
+/* Add your other styles above */
+
+.owner-section {
+  border: 2px solid #ffffff;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color:  rgba(111, 93, 91, 0.5); /* Transparent background */
+  transition: background-color 0.3s, transform 0.3s; /* Add animation to background-color and transform properties */
+  animation: colorChange 1s infinite alternate; /* Apply the color change animation */
+}
+
+.owner-section:hover {
+  background-color:  rgba(0, 187, 255, 0.5); /* Fully opaque background on hover */
+  transform: scale(1.05); /* Enlarge the section on hover */
+  animation: none; /* Disable the color change animation on hover */
+}
+
+.owner-title {
+  color: rgba(0, 0, 0, 0.8); /* Transparent red */
+  transition: color 0.3s; /* Add animation to color property */
+}
+
+.owner-section:hover .owner-title {
+  color: #0000009b; /* Solid red on hover */
+}
+
+.owner-info {
+  color: rgb(0, 0, 0); /* Transparent green */
+  transition: color 0.3s; /* Add animation to color property */
+}
+
+.owner-section:hover .owner-info {
+  color: #000000; /* Solid green on hover */
+}
+
+/* Add your other styles below */
+
+/* @keyframes colorChange {
+  0% {
+    background-color: rgba(255, 8, 193, 0.5);
+  }
+  50% {
+    background-color: rgba(0, 187, 255, 0.5);
+  }
+  100% {
+    background-color: rgba(111, 93, 91, 0.5);
+  }
+} */
